@@ -86,6 +86,10 @@ Rules:
 - nps_source must be a plausible real nps.gov URL
 - confidence: High = easily spotted, Medium = requires effort, Low = rare/elusive
 - Cover a wide geographic spread — Northeast, Southeast, Midwest, Southwest, Northwest, Alaska, Hawaii
+- CRITICAL: states[] must be the actual US state codes where this animal is found in the wild
+  Examples: Acadia NP is in ME not OH. Yellowstone is in WY MT ID. Everglades is in FL only.
+  Double-check every state code — wrong states break the map filter feature.
+- parks[] and states[] must be consistent — every park must be in one of the listed states
 - Return ONLY the JSON object, nothing else"""
 
 
@@ -112,6 +116,44 @@ def clean_json(text: str) -> str:
     return text
 
 
+# Known park → state mappings for validation
+PARK_STATES = {
+    "Yellowstone NP": ["WY", "MT", "ID"],
+    "Grand Teton NP": ["WY"],
+    "Glacier NP": ["MT"],
+    "Everglades NP": ["FL"],
+    "Biscayne NP": ["FL"],
+    "Big Cypress NP": ["FL"],
+    "Acadia NP": ["ME"],
+    "Grand Canyon NP": ["AZ"],
+    "Zion NP": ["UT"],
+    "Bryce Canyon NP": ["UT"],
+    "Rocky Mountain NP": ["CO"],
+    "Olympic NP": ["WA"],
+    "North Cascades NP": ["WA"],
+    "Mount Rainier NP": ["WA"],
+    "Crater Lake NP": ["OR"],
+    "Redwood NP": ["CA"],
+    "Yosemite NP": ["CA"],
+    "Sequoia NP": ["CA"],
+    "Channel Islands NP": ["CA"],
+    "Death Valley NP": ["CA", "NV"],
+    "Joshua Tree NP": ["CA"],
+    "Pinnacles NP": ["CA"],
+    "Great Smoky Mountains NP": ["TN", "NC"],
+    "Shenandoah NP": ["VA"],
+    "Badlands NP": ["SD"],
+    "Wind Cave NP": ["SD"],
+    "Isle Royale NP": ["MI"],
+    "Kenai Fjords NP": ["AK"],
+    "Denali NP": ["AK"],
+    "Wrangell-St. Elias NP": ["AK"],
+    "Hawaii Volcanoes NP": ["HI"],
+    "Haleakalā NP": ["HI"],
+    "Congaree NP": ["SC"],
+    "Cuyahoga Valley NP": ["OH"],
+}
+
 def validate_animal(animal: dict) -> list:
     errors = []
     required = ["id", "name", "emoji", "category", "parks", "states",
@@ -128,6 +170,13 @@ def validate_animal(animal: dict) -> list:
         for m in animal["best_months"]:
             if m not in animal["weather"]:
                 errors.append(f"Missing weather for {m}")
+    # Validate park/state consistency
+    if "parks" in animal and "states" in animal:
+        for park in animal["parks"]:
+            if park in PARK_STATES:
+                valid_states = PARK_STATES[park]
+                if not any(s in animal["states"] for s in valid_states):
+                    errors.append(f"Park/state mismatch: {park} should be in {valid_states} but states={animal['states']}")
     return errors
 
 
