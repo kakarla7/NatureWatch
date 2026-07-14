@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NatureWatch — US Nature & Sky Guide</title>
+<meta name="description" content="Discover where and when to spot wildlife, sky events, and natural phenomena across the US national parks.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:            #0B1A12;
+    --bg2:           #0F1F16;
+    --bg3:           #162B1C;
+    --border:        #1E3524;
+    --stone:         #C4B99A;
+    --white:         #F0EDE6;
+    --sage:          #8FAF7E;
+    --sage-dim:      #4A6B44;
+    --w-accent:      #E8A830;
+    --w-dim:         #A87820;
+    --w-bg:          #1A2E1F;
+    --w-moss:        #2D5A27;
+    --sky-accent:    #7EB8F7;
+    --sky-dim:       #3A7BC8;
+    --sea-accent:    #E87BA8;
+    --sea-dim:       #A8446B;
+    --wat-accent:    #5FD4C8;
+    --wat-dim:       #2A8A80;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--stone);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    min-height: 100vh;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* ── HEADER ──────────────────────────────────────────── */
+  header {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 0 20px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .wordmark {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    text-decoration: none;
+  }
+  .wordmark span { color: var(--w-accent); }
+  .header-meta {
+    font-size: 11px;
+    color: var(--sage-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: none;
+  }
+  @media (min-width: 480px) { .header-meta { display: block; } }
+
+  /* ── CATEGORY TABS ───────────────────────────────────── */
+  .category-tabs {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    padding: 0 4px;
+    position: sticky;
+    top: 52px;
+    z-index: 99;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .category-tabs::-webkit-scrollbar { display: none; }
+
+  .cat-tab {
+    padding: 12px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--sage-dim);
+    cursor: pointer;
+    border: none;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    font-family: 'Inter', sans-serif;
+    transition: color 0.15s;
+    flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .cat-tab:hover { color: var(--stone); }
+  .cat-tab.tab-active-w  { color: var(--w-accent);   border-bottom-color: var(--w-accent); }
+  .cat-tab.tab-active-sk { color: var(--sky-accent);  border-bottom-color: var(--sky-accent); }
+  .cat-tab.tab-active-se { color: var(--sea-accent);  border-bottom-color: var(--sea-accent); }
+  .cat-tab.tab-active-wa { color: var(--wat-accent);  border-bottom-color: var(--wat-accent); }
+
+  .cat-badge {
+    font-size: 10px;
+    padding: 1px 6px;
+    border-radius: 8px;
+    font-weight: 600;
+  }
+  .cb-w  { background: rgba(232,168,48,0.15);  color: var(--w-accent); }
+  .cb-sk { background: rgba(126,184,247,0.15); color: var(--sky-accent); }
+  .cb-se { background: rgba(232,123,168,0.12); color: var(--sea-accent); }
+  .cb-wa { background: rgba(95,212,200,0.12);  color: var(--wat-accent); }
+
+  /* ── PANELS ──────────────────────────────────────────── */
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* ── SEARCH ZONE ─────────────────────────────────────── */
+  .search-zone {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 16px;
+  }
+
+  .tag-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    min-height: 32px;
+  }
+  .tag {
+    background: var(--w-bg);
+    border: 1px solid var(--w-dim);
+    border-radius: 20px;
+    padding: 4px 10px 4px 12px;
+    font-size: 12px;
+    color: var(--w-accent);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .tag .x {
+    color: var(--sage-dim);
+    font-size: 15px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 2px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .tag .x:hover { color: var(--w-accent); }
+
+  .search-wrap {
+    position: relative;
+    flex: 1;
+    min-width: 150px;
+    max-width: 260px;
+  }
+  .search-input {
+    width: 100%;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 7px 14px;
+    color: var(--white);
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    -webkit-appearance: none;
+    transition: border-color 0.15s;
+  }
+  .search-input::placeholder { color: var(--sage-dim); }
+  .search-input:focus { border-color: var(--sage-dim); }
+
+  .suggestions {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    width: 240px;
+    background: #1C3022;
+    border: 1px solid var(--sage-dim);
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 300;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    display: none;
+  }
+  .sugg-item {
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--stone);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .sugg-item:hover, .sugg-item.focused { background: var(--w-bg); color: var(--white); }
+  .sugg-item .s-em { font-size: 18px; }
+  .sugg-no-result {
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--sage-dim);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sugg-request {
+    color: var(--w-accent);
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration: underline;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* ── NOT FOUND BOX ───────────────────────────────────── */
+  .not-found-box {
+    background: var(--bg3);
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    padding: 24px 20px;
+    text-align: center;
+    margin: 24px 16px;
+  }
+  .nf-icon { font-size: 32px; margin-bottom: 10px; }
+  .nf-title { color: var(--white); font-size: 15px; font-weight: 500; margin-bottom: 6px; }
+  .nf-sub   { color: var(--sage-dim); font-size: 13px; margin-bottom: 14px; line-height: 1.5; }
+  .similar  { display: flex; gap: 7px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
+  .sim-tag  {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 12px;
+    color: var(--sage);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .sim-tag:hover { border-color: var(--sage-dim); color: var(--white); }
+  .request-btn {
+    background: none;
+    border: 1px solid var(--w-accent);
+    color: var(--w-accent);
+    border-radius: 20px;
+    padding: 8px 20px;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .request-btn:hover, .request-btn:active { background: var(--w-accent); color: var(--bg); }
+
+  /* ── FILTER BAR ──────────────────────────────────────── */
+  .filter-bar {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .filter-bar::-webkit-scrollbar { display: none; }
+
+  .pill {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--sage);
+    cursor: pointer;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .pill:hover { border-color: var(--sage-dim); color: var(--white); }
+  .pill.pill-on { background: var(--w-moss); border-color: var(--w-moss); color: var(--white); }
+  .sort-div  { width: 1px; background: var(--border); flex-shrink: 0; margin: 0 2px; }
+  .sort-lbl  { font-size: 11px; color: var(--sage-dim); text-transform: uppercase; letter-spacing: 0.4px; white-space: nowrap; align-self: center; flex-shrink: 0; }
+
+  /* ── RESULTS ─────────────────────────────────────────── */
+  .results { padding: 0 16px 56px; }
+
+  .month-group { margin-top: 28px; }
+
+  .month-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    padding: 7px 16px;
+  }
+  .m-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--w-accent);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+  }
+  .m-count {
+    font-size: 10px;
+    background: var(--w-accent);
+    color: var(--bg);
+    border-radius: 8px;
+    padding: 1px 6px;
+    font-weight: 700;
+  }
+
+  /* Mobile: card layout. Desktop: table */
+  .animal-cards {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 0 8px 8px 8px;
+    overflow: hidden;
+  }
+
+  .animal-card {
+    border-bottom: 1px solid var(--border);
+    padding: 14px;
+    cursor: pointer;
+    transition: background 0.12s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .animal-card:last-child { border-bottom: none; }
+  .animal-card:hover { background: rgba(255,255,255,0.03); }
+  .animal-card.sel { background: var(--w-bg); }
+  .animal-card.sel:hover { background: #1E3828; }
+
+  .card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .card-animal {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-emoji { font-size: 24px; line-height: 1; flex-shrink: 0; }
+  .card-name  { font-size: 15px; font-weight: 500; color: var(--white); }
+  .card-cat   { font-size: 11px; color: var(--sage-dim); margin-top: 2px; }
+
+  .sel-badge {
+    font-size: 10px;
+    background: var(--w-accent);
+    color: var(--bg);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-weight: 700;
+    flex-shrink: 0;
+    align-self: flex-start;
+    margin-top: 4px;
+  }
+
+  .card-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  @media (min-width: 480px) {
+    .card-meta { grid-template-columns: 1fr 1fr 1fr 1fr; }
+  }
+
+  .meta-item { }
+  .meta-label {
+    font-size: 10px;
+    color: var(--sage-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 3px;
+    font-weight: 600;
+  }
+  .meta-value {
+    font-size: 12px;
+    color: var(--stone);
+    line-height: 1.4;
+  }
+  .meta-value.bright { color: var(--white); font-weight: 500; }
+
+  .month-pills { display: flex; gap: 3px; flex-wrap: wrap; }
+  .mpill {
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-weight: 500;
+    white-space: nowrap;
+    background: var(--w-moss);
+    color: var(--sage);
+  }
+  .mpill.hi { background: var(--w-dim); color: var(--w-accent); }
+
+  .conf-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    padding: 2px 7px;
+    border-radius: 4px;
+  }
+  .conf-high { background: rgba(45,90,39,0.4); color: var(--sage); }
+  .conf-med  { background: rgba(168,120,32,0.3); color: var(--w-accent); }
+  .conf-low  { background: rgba(200,80,80,0.2); color: #E87878; }
+
+  .nps-a {
+    font-size: 11px;
+    color: var(--sage-dim);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+  }
+  .nps-a:hover { color: var(--w-accent); }
+
+  /* ── EMPTY ───────────────────────────────────────────── */
+  .empty {
+    text-align: center;
+    padding: 56px 20px;
+    color: var(--sage-dim);
+  }
+  .empty-icon { font-size: 44px; margin-bottom: 14px; }
+  .empty h3   { color: var(--sage); font-size: 15px; margin-bottom: 6px; }
+  .empty p    { font-size: 13px; line-height: 1.5; }
+
+  /* ── COMING SOON ─────────────────────────────────────── */
+  .coming-soon {
+    text-align: center;
+    padding: 60px 20px;
+  }
+  .cs-icon  { font-size: 52px; margin-bottom: 18px; }
+  .cs-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+  .cs-sub {
+    font-size: 13px;
+    color: var(--sage-dim);
+    margin-bottom: 28px;
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+  .cs-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+  .cs-chip {
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid;
+  }
+  .cc-sk { border-color: var(--sky-dim); color: var(--sky-accent); background: rgba(126,184,247,0.05); }
+  .cc-se { border-color: var(--sea-dim); color: var(--sea-accent); background: rgba(232,123,168,0.05); }
+  .cc-wa { border-color: var(--wat-dim); color: var(--wat-accent); background: rgba(95,212,200,0.05); }
+
+  /* ── DROPDOWN ────────────────────────────────────────── */
+  .drop-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 250;
+  }
+  .drop-overlay.open { display: block; }
+  .drop-panel {
+    position: fixed;
+    background: #1C3022;
+    border: 1px solid var(--sage-dim);
+    border-radius: 10px;
+    min-width: 180px;
+    max-width: 240px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    overflow: hidden;
+    z-index: 251;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  .dp-item {
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--stone);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .dp-item:hover { background: var(--w-bg); color: var(--white); }
+  .dp-item.dp-sel { color: var(--w-accent); }
+  .dp-item.dp-sel::after { content: '✓'; color: var(--w-accent); }
+
+  /* ── REFRESH BANNER ──────────────────────────────────── */
+  .refresh-bar {
+    background: var(--bg3);
+    border-bottom: 1px solid var(--border);
+    padding: 6px 16px;
+    font-size: 11px;
+    color: var(--sage-dim);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .refresh-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--sage);
+    display: inline-block;
+    margin-right: 5px;
+  }
+
+  /* ── FOOTER ──────────────────────────────────────────── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 18px 16px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--sage-dim);
+    line-height: 1.8;
+  }
+  footer a { color: var(--sage-dim); text-decoration: underline; }
+
+  @media (min-width: 600px) {
+    .search-zone { padding: 14px 20px; }
+    .results { padding: 0 20px 56px; }
+    .refresh-bar { padding: 6px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a class="wordmark" href="#">🌿 Nature<span>Watch</span></a>
+  <div class="header-meta" id="headerMeta">Loading…</div>
+</header>
+
+<!-- CATEGORY TABS -->
+<div class="category-tabs">
+  <button class="cat-tab tab-active-w" onclick="switchTab('w',this)">
+    🐾 Wildlife <span class="cat-badge cb-w" id="wBadge">—</span>
+  </button>
+  <button class="cat-tab" onclick="switchTab('sk',this)">
+    🌌 Sky Events <span class="cat-badge cb-sk">Soon</span>
+  </button>
+  <button class="cat-tab" onclick="switchTab('se',this)">
+    🌸 Seasonal <span class="cat-badge cb-se">Soon</span>
+  </button>
+  <button class="cat-tab" onclick="switchTab('wa',this)">
+    🌊 Water & Earth <span class="cat-badge cb-wa">Soon</span>
+  </button>
+</div>
+
+<!-- ══ WILDLIFE PANEL ══════════════════════════════════════ -->
+<div class="panel active" id="panel-w">
+
+  <!-- Refresh bar -->
+  <div class="refresh-bar">
+    <span><span class="refresh-dot"></span><span id="refreshMeta">Loading data…</span></span>
+    <span id="nextRefresh"></span>
+  </div>
+
+  <!-- Search zone -->
+  <div class="search-zone">
+    <div class="tag-row" id="tagRow">
+      <!-- tags injected here -->
+      <div class="search-wrap">
+        <input class="search-input" id="animalSearch" type="text"
+          placeholder="+ Search animals…" autocomplete="off"
+          oninput="onSearch(this.value)"
+          onfocus="onSearch(this.value)"
+          onkeydown="onKey(event)">
+        <div class="suggestions" id="suggBox"></div>
+      </div>
+    </div>
+    <div class="filter-bar">
+      <button class="pill pill-on" id="pill-park" onclick="openDrop(event,'park')">🏕 All Parks ▾</button>
+      <button class="pill" id="pill-month" onclick="openDrop(event,'month')">📅 All Months ▾</button>
+      <button class="pill" id="pill-time" onclick="openDrop(event,'time')">🕐 Any Time ▾</button>
+      <div class="sort-div"></div>
+      <span class="sort-lbl">Sort</span>
+      <button class="pill pill-on" id="sort-month" onclick="setSort('month',this)">Month</button>
+      <button class="pill" id="sort-park"   onclick="setSort('park',this)">Park</button>
+      <button class="pill" id="sort-animal" onclick="setSort('animal',this)">Animal</button>
+      <button class="pill" id="sort-time"   onclick="setSort('time',this)">Time</button>
+    </div>
+  </div>
+
+  <div class="results" id="results"></div>
+</div>
+
+<!-- ══ SKY PANEL ═══════════════════════════════════════════ -->
+<div class="panel" id="panel-sk">
+  <div class="coming-soon">
+    <div class="cs-icon">🌌</div>
+    <div class="cs-title">Sky Events</div>
+    <p class="cs-sub">Northern lights forecasts, meteor showers, eclipses, Milky Way windows, and planet visibility — coming in Phase 2.</p>
+    <div class="cs-chips">
+      <span class="cs-chip cc-sk">🌌 Northern Lights</span>
+      <span class="cs-chip cc-sk">☄️ Meteor Showers</span>
+      <span class="cs-chip cc-sk">🌑 Solar Eclipses</span>
+      <span class="cs-chip cc-sk">🪐 Planet Visibility</span>
+      <span class="cs-chip cc-sk">🌌 Milky Way Windows</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SEASONAL PANEL ══════════════════════════════════════ -->
+<div class="panel" id="panel-se">
+  <div class="coming-soon">
+    <div class="cs-icon">🌸</div>
+    <div class="cs-title">Seasonal Nature</div>
+    <p class="cs-sub">Wildflower blooms, fall foliage, monarch migrations, salmon runs, and bird flyways — coming in Phase 3.</p>
+    <div class="cs-chips">
+      <span class="cs-chip cc-se">🌸 Wildflower Blooms</span>
+      <span class="cs-chip cc-se">🍂 Fall Foliage</span>
+      <span class="cs-chip cc-se">🦋 Monarch Migration</span>
+      <span class="cs-chip cc-se">🐟 Salmon Runs</span>
+      <span class="cs-chip cc-se">🦅 Bird Flyways</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ WATER PANEL ═════════════════════════════════════════ -->
+<div class="panel" id="panel-wa">
+  <div class="coming-soon">
+    <div class="cs-icon">🌊</div>
+    <div class="cs-title">Water & Earth</div>
+    <p class="cs-sub">Bioluminescence bays, tide pool seasons, volcano activity, and coastal phenomena — coming in Phase 4.</p>
+    <div class="cs-chips">
+      <span class="cs-chip cc-wa">🌊 Bioluminescence</span>
+      <span class="cs-chip cc-wa">🪨 Tide Pools</span>
+      <span class="cs-chip cc-wa">🌋 Volcano Activity</span>
+      <span class="cs-chip cc-wa">🐚 Coral Spawning</span>
+    </div>
+  </div>
+</div>
+
+<!-- DROP OVERLAY -->
+<div class="drop-overlay" id="dropOverlay" onclick="closeDrop()">
+</div>
+<div class="drop-panel" id="dropPanel" style="display:none"></div>
+
+<footer>
+  Wildlife data from <a href="https://nps.gov" target="_blank">National Park Service</a> ·
+  Refreshed every 2 weeks ·
+  <a href="GOOGLE_FORM_URL" target="_blank" id="footerRequest">Request a species ↗</a>
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════════════════════
+const FORM_URL = 'GOOGLE_FORM_URL'; // replaced when form is set up
+
+let ANIMALS = [];          // loaded from wildlife_data.json
+let selectedIds = [];      // animals the user has chosen
+let currentSort = 'month';
+let filter = { park: null, month: null, time: null };
+let lastNotFound = '';     // last search that found no results
+let suggFocus = -1;
+
+const MONTH_ORDER = [
+  'January','February','March','April','May','June',
+  'July','August','September','October','November','December'
+];
+
+// ═══════════════════════════════════════════════════════════
+//  LOAD DATA
+// ═══════════════════════════════════════════════════════════
+async function loadData() {
+  try {
+    const res = await fetch('data/wildlife_data.json');
+    if (!res.ok) throw new Error('fetch failed');
+    const json = await res.json();
+    ANIMALS = json.animals || [];
+
+    // Update UI meta
+    document.getElementById('wBadge').textContent = ANIMALS.length;
+    document.getElementById('headerMeta').textContent =
+      `Updated ${json.generated_at || '—'} · ${ANIMALS.length} species`;
+    document.getElementById('refreshMeta').textContent =
+      `Data updated ${json.generated_at || '—'}`;
+    document.getElementById('nextRefresh').textContent =
+      json.next_refresh ? `Next refresh ${json.next_refresh}` : '';
+
+    render();
+  } catch (e) {
+    document.getElementById('results').innerHTML =
+      `<div class="empty"><div class="empty-icon">⚠️</div>
+       <h3>Could not load wildlife data</h3>
+       <p>Try refreshing the page.</p></div>`;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════
+//  TAB SWITCHING
+// ═══════════════════════════════════════════════════════════
+function switchTab(cat, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.cat-tab').forEach(t => {
+    t.className = 'cat-tab';
+  });
+  document.getElementById('panel-' + cat).classList.add('active');
+  btn.classList.add('tab-active-' + cat);
+}
+
+// ═══════════════════════════════════════════════════════════
+//  SEARCH / TYPEAHEAD
+// ═══════════════════════════════════════════════════════════
+function onSearch(val) {
+  const box = document.getElementById('suggBox');
+  const q = val.trim().toLowerCase();
+
+  if (!q) { box.style.display = 'none'; suggFocus = -1; return; }
+
+  const available = ANIMALS.filter(a =>
+    !selectedIds.includes(a.id) &&
+    a.name.toLowerCase().includes(q)
+  );
+
+  if (!available.length) {
+    // Not found state in dropdown
+    lastNotFound = val.trim();
+    const similar = ANIMALS
+      .filter(a => !selectedIds.includes(a.id))
+      .slice(0, 3);
+    box.innerHTML = `
+      <div class="sugg-no-result">
+        🔭 "${val.trim()}" not found ·
+        <span class="sugg-request" onclick="openRequestForm('${escHtml(val.trim())}')">Request it</span>
+      </div>`;
+    box.style.display = 'block';
+    return;
+  }
+
+  box.innerHTML = available.slice(0, 6).map(a =>
+    `<div class="sugg-item" onclick="addAnimal('${a.id}')">
+      <span class="s-em">${a.emoji}</span> ${a.name}
+    </div>`
+  ).join('');
+  box.style.display = 'block';
+  suggFocus = -1;
+}
+
+function onKey(e) {
+  const items = document.querySelectorAll('.sugg-item');
+  if (e.key === 'ArrowDown') {
+    suggFocus = Math.min(suggFocus + 1, items.length - 1);
+    items.forEach((el, i) => el.classList.toggle('focused', i === suggFocus));
+    e.preventDefault();
+  } else if (e.key === 'ArrowUp') {
+    suggFocus = Math.max(suggFocus - 1, 0);
+    items.forEach((el, i) => el.classList.toggle('focused', i === suggFocus));
+    e.preventDefault();
+  } else if (e.key === 'Enter' && suggFocus >= 0) {
+    items[suggFocus]?.click();
+  } else if (e.key === 'Escape') {
+    document.getElementById('suggBox').style.display = 'none';
+  }
+}
+
+function addAnimal(id) {
+  if (selectedIds.includes(id)) return;
+  selectedIds.push(id);
+  const a = ANIMALS.find(x => x.id === id);
+  if (!a) return;
+
+  // Add tag before the search wrap
+  const row = document.getElementById('tagRow');
+  const wrap = row.querySelector('.search-wrap');
+  const tag = document.createElement('div');
+  tag.className = 'tag';
+  tag.dataset.id = id;
+  tag.innerHTML = `${a.emoji} ${a.name} <span class="x" onclick="removeAnimal('${id}')">×</span>`;
+  row.insertBefore(tag, wrap);
+
+  document.getElementById('animalSearch').value = '';
+  document.getElementById('suggBox').style.display = 'none';
+  render();
+}
+
+function removeAnimal(id) {
+  selectedIds = selectedIds.filter(x => x !== id);
+  document.querySelector(`.tag[data-id="${id}"]`)?.remove();
+  render();
+}
+
+function openRequestForm(name) {
+  document.getElementById('suggBox').style.display = 'none';
+  document.getElementById('animalSearch').value = '';
+  showNotFound(name);
+}
+
+function showNotFound(name) {
+  // Find similar animals by category overlap or alphabetical
+  const similar = ANIMALS.filter(a => !selectedIds.includes(a.id)).slice(0, 3);
+  const box = document.createElement('div');
+  box.className = 'not-found-box';
+  box.id = 'notFoundBox';
+  box.innerHTML = `
+    <div class="nf-icon">🔭</div>
+    <div class="nf-title">"${escHtml(name)}" isn't in NatureWatch yet</div>
+    <p class="nf-sub">We may not track it yet, or it might not be found wild in the US.</p>
+    ${similar.length ? `
+      <div class="similar">
+        ${similar.map(a => `<span class="sim-tag" onclick="addAnimal('${a.id}')">${a.emoji} ${a.name}</span>`).join('')}
+      </div>` : ''}
+    <button class="request-btn" onclick="window.open('${FORM_URL}','_blank')">
+      + Request "${escHtml(name)}"
+    </button>`;
+
+  const results = document.getElementById('results');
+  const existing = document.getElementById('notFoundBox');
+  if (existing) existing.remove();
+  results.insertAdjacentElement('afterbegin', box);
+}
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.search-wrap')) {
+    document.getElementById('suggBox').style.display = 'none';
+  }
+});
+
+// ═══════════════════════════════════════════════════════════
+//  FILTERS & SORT
+// ═══════════════════════════════════════════════════════════
+function setSort(type, btn) {
+  currentSort = type;
+  document.querySelectorAll('[id^="sort-"]').forEach(b => b.classList.remove('pill-on'));
+  btn.classList.add('pill-on');
+  render();
+}
+
+const DROP_DATA = {
+  park: () => {
+    const parks = new Set();
+    ANIMALS.forEach(a => a.parks.forEach(p => parks.add(p)));
+    return ['All Parks', ...Array.from(parks).sort()];
+  },
+  month: () => ['All Months', ...MONTH_ORDER],
+  time:  () => ['Any Time', 'Dawn & Dusk', 'Early Morning', 'Morning', 'Midday', 'Dusk', 'Anytime']
+};
+
+const PILL_LABELS = { park: '🏕', month: '📅', time: '🕐' };
+const PILL_DEFAULTS = { park: 'All Parks', month: 'All Months', time: 'Any Time' };
+
+function openDrop(e, type) {
+  e.stopPropagation();
+  const btn = e.currentTarget;
+  const rect = btn.getBoundingClientRect();
+  const panel = document.getElementById('dropPanel');
+  const items = DROP_DATA[type]();
+
+  panel.innerHTML = items.map(item => {
+    const isDefault = item.startsWith('All') || item.startsWith('Any');
+    const isSel = filter[type] ? filter[type] === item : isDefault;
+    return `<div class="dp-item ${isSel ? 'dp-sel' : ''}"
+      onclick="pickFilter('${type}','${escHtml(item)}',event)">
+      ${escHtml(item)}</div>`;
+  }).join('');
+
+  // Position: try below button, flip if near bottom
+  const spaceBelow = window.innerHeight - rect.bottom;
+  const panelH = Math.min(items.length * 40, 300);
+  let top = rect.bottom + 6;
+  if (spaceBelow < panelH + 20) top = rect.top - panelH - 6;
+
+  panel.style.top  = top + 'px';
+  panel.style.left = Math.min(rect.left, window.innerWidth - 200) + 'px';
+  panel.style.display = 'block';
+  document.getElementById('dropOverlay').classList.add('open');
+}
+
+function pickFilter(type, val, e) {
+  e.stopPropagation();
+  filter[type] = (val.startsWith('All') || val.startsWith('Any')) ? null : val;
+  const pill = document.getElementById('pill-' + type);
+  const label = filter[type] || PILL_DEFAULTS[type];
+  pill.innerHTML = `${PILL_LABELS[type]} ${label} ▾`;
+  pill.classList.toggle('pill-on', !!filter[type]);
+  closeDrop();
+  render();
+}
+
+function closeDrop() {
+  document.getElementById('dropOverlay').classList.remove('open');
+  document.getElementById('dropPanel').style.display = 'none';
+}
+
+// ═══════════════════════════════════════════════════════════
+//  RENDER
+// ═══════════════════════════════════════════════════════════
+function getFiltered() {
+  return ANIMALS.filter(a => {
+    if (filter.park  && !a.parks.includes(filter.park))             return false;
+    if (filter.month && !a.best_months.includes(filter.month))      return false;
+    if (filter.time  && filter.time !== 'Any Time'
+        && a.best_time !== filter.time)                             return false;
+    return true;
+  });
+}
+
+function isSel(a) { return selectedIds.includes(a.id); }
+
+function render() {
+  const data = getFiltered();
+  const container = document.getElementById('results');
+
+  // Preserve not-found box if present
+  const nfBox = document.getElementById('notFoundBox');
+
+  if (!data.length) {
+    container.innerHTML = `<div class="empty">
+      <div class="empty-icon">🔭</div>
+      <h3>No wildlife found</h3>
+      <p>Try different filters or clear your search.</p>
+    </div>`;
+    if (nfBox) container.insertAdjacentElement('afterbegin', nfBox);
+    return;
+  }
+
+  let html = '';
+
+  if (currentSort === 'month') {
+    const byMonth = {};
+    data.forEach(a => a.best_months.forEach(m => {
+      if (!byMonth[m]) byMonth[m] = [];
+      byMonth[m].push(a);
+    }));
+    MONTH_ORDER.filter(m => byMonth[m]).forEach(m => {
+      byMonth[m].sort((a,b) => isSel(b) - isSel(a));
+      html += monthGroup(m, byMonth[m], m);
+    });
+
+  } else if (currentSort === 'park') {
+    const byPark = {};
+    data.forEach(a => a.parks.forEach(p => {
+      if (!byPark[p]) byPark[p] = [];
+      byPark[p].push(a);
+    }));
+    Object.keys(byPark).sort().forEach(p => {
+      byPark[p].sort((a,b) => isSel(b) - isSel(a));
+      html += monthGroup('🏕 ' + p, byPark[p], null);
+    });
+
+  } else if (currentSort === 'animal') {
+    const sorted = [...data].sort((a,b) => {
+      if (isSel(a) !== isSel(b)) return isSel(b) - isSel(a);
+      return a.name.localeCompare(b.name);
+    });
+    html += monthGroup(null, sorted, null);
+
+  } else if (currentSort === 'time') {
+    const TIME_ORDER = ['Dawn & Dusk','Early Morning','Morning','Midday','Dusk','Anytime'];
+    const byTime = {};
+    data.forEach(a => {
+      if (!byTime[a.best_time]) byTime[a.best_time] = [];
+      byTime[a.best_time].push(a);
+    });
+    TIME_ORDER.filter(t => byTime[t]).forEach(t => {
+      byTime[t].sort((a,b) => isSel(b) - isSel(a));
+      html += monthGroup('🕐 ' + t, byTime[t], null);
+    });
+  }
+
+  container.innerHTML = html;
+  if (nfBox) container.insertAdjacentElement('afterbegin', nfBox);
+}
+
+function monthGroup(label, animals, contextMonth) {
+  const tabHtml = label
+    ? `<div class="month-tab">
+        <span class="m-name">${escHtml(label)}</span>
+        <span class="m-count">${animals.length}</span>
+       </div>`
+    : '';
+  return `<div class="month-group">
+    ${tabHtml}
+    <div class="animal-cards">
+      ${animals.map(a => animalCard(a, contextMonth)).join('')}
+    </div>
+  </div>`;
+}
+
+function animalCard(a, contextMonth) {
+  const sel = isSel(a);
+  const tempKey = (contextMonth && a.temps[contextMonth]) ? contextMonth : a.best_months[0];
+  const temp    = a.temps[tempKey]   || '—';
+  const wx      = a.weather[tempKey] || '';
+  const confClass = { High:'conf-high', Medium:'conf-med', Low:'conf-low' }[a.confidence] || 'conf-med';
+
+  const pills = a.best_months.map(m =>
+    `<span class="mpill ${m === contextMonth ? 'hi' : ''}">${m.slice(0,3)}</span>`
+  ).join('');
+
+  return `<div class="animal-card ${sel ? 'sel' : ''}">
+    <div class="card-top">
+      <div class="card-animal">
+        <span class="card-emoji">${a.emoji}</span>
+        <div>
+          <div class="card-name">${escHtml(a.name)}</div>
+          <div class="card-cat">${a.category}</div>
+        </div>
+      </div>
+      ${sel ? '<span class="sel-badge">✓ Selected</span>' : ''}
+    </div>
+    <div class="card-meta">
+      <div class="meta-item">
+        <div class="meta-label">Park</div>
+        <div class="meta-value bright">${escHtml(a.parks[0])}</div>
+        ${a.parks[1] ? `<div class="meta-value" style="font-size:11px;color:var(--sage-dim)">${escHtml(a.parks[1])}</div>` : ''}
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Best Months</div>
+        <div class="meta-value"><div class="month-pills">${pills}</div></div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Best Time</div>
+        <div class="meta-value bright">${escHtml(a.best_time)}</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Weather</div>
+        <div class="meta-value bright">${wx} ${escHtml(temp)}</div>
+        <div style="margin-top:5px">
+          <span class="conf-badge ${confClass}">${a.confidence}</span>
+        </div>
+        <div style="margin-top:5px">
+          <a class="nps-a" href="${escHtml(a.nps_source)}" target="_blank" rel="noopener">NPS ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════════════════
+//  UTILS
+// ═══════════════════════════════════════════════════════════
+function escHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#39;');
+}
+
+// ═══════════════════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════════════════
+loadData();
+</script>
+</body>
+</html>

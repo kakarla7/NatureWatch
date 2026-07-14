@@ -1,0 +1,41 @@
+name: Refresh Wildlife Data
+
+on:
+  schedule:
+    # 1st of every month at 6am UTC
+    - cron: '0 6 1 * *'
+    # 15th of every month at 6am UTC
+    - cron: '0 6 15 * *'
+  # Allow manual trigger from GitHub Actions tab
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # needed to commit wildlife_data.json back to repo
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install anthropic
+
+      - name: Run refresh script
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/refresh_wildlife.py
+
+      - name: Commit updated wildlife data
+        run: |
+          git config --global user.name "NatureWatch Bot"
+          git config --global user.email "bot@naturewatch"
+          git add data/wildlife_data.json
+          git diff --staged --quiet || git commit -m "chore: refresh wildlife data $(date +'%Y-%m-%d')"
+          git push
