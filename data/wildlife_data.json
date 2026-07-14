@@ -1,28 +1,41 @@
 {
-  "generated_at": "2026-07-01",
+  "generated_at": "2026-07-14",
   "next_refresh": "2026-07-15",
   "total": 20,
   "animals": [
     {
-      "id": "grizzly-bear",
-      "name": "Grizzly Bear",
-      "emoji": "🐻",
+      "id": "american-bison",
+      "name": "American Bison",
+      "emoji": "🦬",
       "category": "Mammal",
-      "parks": ["Yellowstone NP", "Grand Teton NP", "Glacier NP"],
-      "states": ["WY", "MT", "ID", "AK"],
-      "best_months": ["March", "April", "May", "June", "September", "October"],
+      "parks": [
+        "Yellowstone NP",
+        "Theodore Roosevelt NP"
+      ],
+      "states": [
+        "WY",
+        "MT",
+        "ND"
+      ],
+      "best_months": [
+        "June",
+        "July",
+        "August"
+      ],
       "best_time": "Dawn & Dusk",
       "temps": {
-        "March": "32–48°F", "April": "38–55°F", "May": "46–65°F",
-        "June": "54–74°F", "September": "44–68°F", "October": "32–54°F"
+        "June": "45–75°F",
+        "July": "55–85°F",
+        "August": "53–83°F"
       },
       "weather": {
-        "March": "❄️", "April": "⛅", "May": "🌤",
-        "June": "☀️", "September": "🌤", "October": "⛅"
+        "June": "🌤",
+        "July": "☀️",
+        "August": "☀️"
       },
-      "behavior_notes": "Post-hibernation foraging in spring; hyperphagia (intense feeding) in fall before denning.",
-      "viewing_tips": "Stay at least 100 yards away. Lamar Valley and Hayden Valley are top spots at dawn.",
-      "nps_source": "https://www.nps.gov/yell/learn/nature/bears.htm",
+      "behavior_notes": "During summer, bison gather in large herds on the Lamar Valley and Hayden Valley floors. July brings the rut, with bulls bellowing and sparring dramatically.",
+      "viewing_tips": "Stay at least 75 feet away at all times. Use a spotting scope or telephoto lens from pullouts along the Grand Loop Road at dawn for the best encounters.",
+      "nps_source": "https://www.nps.gov/yell/learn/nature/bison.htm",
       "confidence": "High"
     },
     {
@@ -30,169 +43,131 @@
       "name": "Gray Wolf",
       "emoji": "🐺",
       "category": "Mammal",
-      "parks": ["Yellowstone NP", "Grand Teton NP"],
-      "states": ["WY", "MT", "ID"],
-      "best_months": ["November", "December", "January", "February", "March"],
-      "best_time": "Early Morning",
+      "parks": [
+        "Yellowstone NP",
+        "Denali NP"
+      ],
+      "states": [
+        "WY",
+        "AK"
+      ],
+      "best_months": [
+        "January",
+        "February",
+        "March"
+      ],
+      "best_time": "Dawn & Dusk",
       "temps": {
-        "November": "18–38°F", "December": "8–26°F", "January": "5–22°F",
-        "February": "10–28°F", "March": "18–40°F"
+        "January": "5–25°F",
+        "February": "8–28°F",
+        "March": "18–40°F"
       },
       "weather": {
-        "November": "🌨", "December": "❄️", "January": "❄️",
-        "February": "❄️", "March": "🌨"
+        "January": "❄️",
+        "February": "❄️",
+        "March": "🌨"
       },
-      "behavior_notes": "Pack hunting in open valleys. Snow makes tracking easier and wolves more visible.",
-      "viewing_tips": "Bring a spotting scope. Lamar Valley at sunrise in winter is the best wolf-watching on Earth.",
+      "behavior_notes": "Winter is ideal for wolf watching as packs are active during the rut of prey species and snow makes tracking easier. The Lamar Valley's open terrain allows long-distance observation.",
+      "viewing_tips": "Arrive before dawn at Lamar Valley pullouts and bring a spotting scope of at least 60x magnification. Join ranger-led wolf-watching programs for insider knowledge on pack locations.",
       "nps_source": "https://www.nps.gov/yell/learn/nature/wolves.htm",
-      "confidence": "High"
-    },
-    {
-      "id": "american-bison",
-      "name": "American Bison",
-      "emoji": "🦬",
-      "category": "Mammal",
-      "parks": ["Yellowstone NP", "Badlands NP", "Wind Cave NP"],
-      "states": ["WY", "SD", "OK"],
-      "best_months": ["June", "July", "August", "September"],
-      "best_time": "Anytime",
-      "temps": {
-        "June": "52–76°F", "July": "60–84°F",
-        "August": "58–82°F", "September": "44–68°F"
-      },
-      "weather": {
-        "June": "⛅", "July": "☀️", "August": "☀️", "September": "🌤"
-      },
-      "behavior_notes": "Rut (mating season) peaks in July–August. Bulls become aggressive — never approach.",
-      "viewing_tips": "Hayden Valley in Yellowstone. Stay 25 yards minimum. They can run 35mph.",
-      "nps_source": "https://www.nps.gov/yell/learn/nature/bison.htm",
-      "confidence": "High"
-    },
-    {
-      "id": "rocky-mountain-elk",
-      "name": "Rocky Mountain Elk",
-      "emoji": "🦌",
-      "category": "Mammal",
-      "parks": ["Grand Teton NP", "Rocky Mountain NP", "Yellowstone NP"],
-      "states": ["WY", "CO", "MT"],
-      "best_months": ["September", "October", "November"],
-      "best_time": "Dusk",
-      "temps": {
-        "September": "42–66°F", "October": "30–54°F", "November": "18–38°F"
-      },
-      "weather": {
-        "September": "🌤", "October": "⛅", "November": "🌨"
-      },
-      "behavior_notes": "Elk rut in September is spectacular — bulls bugle and spar for mates in open meadows.",
-      "viewing_tips": "Mammoth Hot Springs and Madison Valley in Yellowstone. Listen for bugling at dusk.",
-      "nps_source": "https://www.nps.gov/grte/learn/nature/elk.htm",
-      "confidence": "High"
+      "confidence": "Medium"
     },
     {
       "id": "moose",
       "name": "Moose",
       "emoji": "🫎",
       "category": "Mammal",
-      "parks": ["Grand Teton NP", "Rocky Mountain NP", "Isle Royale NP"],
-      "states": ["WY", "CO", "MI", "ME"],
-      "best_months": ["May", "June", "September", "October"],
+      "parks": [
+        "Acadia NP",
+        "Isle Royale NP"
+      ],
+      "states": [
+        "ME",
+        "MI"
+      ],
+      "best_months": [
+        "September",
+        "October"
+      ],
       "best_time": "Dawn & Dusk",
       "temps": {
-        "May": "38–58°F", "June": "46–68°F",
-        "September": "40–62°F", "October": "28–50°F"
+        "September": "45–65°F",
+        "October": "35–52°F"
       },
       "weather": {
-        "May": "🌤", "June": "⛅", "September": "🌤", "October": "🍂"
+        "September": "🍂",
+        "October": "🍂"
       },
-      "behavior_notes": "Cows with calves in spring; bulls grow antlers through summer. Willow Flats in Grand Teton is prime habitat.",
-      "viewing_tips": "Oxbow Bend and Willow Flats at Grand Teton. Give at least 75 feet of space — moose are unpredictable.",
-      "nps_source": "https://www.nps.gov/grte/learn/nature/moose.htm",
-      "confidence": "High"
-    },
-    {
-      "id": "pronghorn",
-      "name": "Pronghorn",
-      "emoji": "🐐",
-      "category": "Mammal",
-      "parks": ["Grand Teton NP", "Yellowstone NP", "Badlands NP"],
-      "states": ["WY", "SD", "MT", "AZ"],
-      "best_months": ["May", "June", "July", "August"],
-      "best_time": "Morning",
-      "temps": {
-        "May": "44–64°F", "June": "52–76°F",
-        "July": "60–86°F", "August": "58–84°F"
-      },
-      "weather": {
-        "May": "🌤", "June": "☀️", "July": "☀️", "August": "☀️"
-      },
-      "behavior_notes": "Fastest land animal in the Western Hemisphere at 55mph. Open sagebrush flats are prime habitat.",
-      "viewing_tips": "Antelope Flats Road in Grand Teton. Binoculars helpful as they roam wide open terrain.",
-      "nps_source": "https://www.nps.gov/grte/learn/nature/pronghorn.htm",
+      "behavior_notes": "September and October mark the moose rut, when bulls are highly active and vocal, making them easier to locate. Cows with calves can be spotted near wetlands and pond edges.",
+      "viewing_tips": "Search wetland edges, beaver ponds, and willow thickets at dawn. On Isle Royale, take the ferry to the island and hike near Tobin Harbor for reliable sightings.",
+      "nps_source": "https://www.nps.gov/isro/learn/nature/moose.htm",
       "confidence": "Medium"
     },
     {
       "id": "black-bear",
-      "name": "Black Bear",
+      "name": "American Black Bear",
       "emoji": "🐻",
       "category": "Mammal",
-      "parks": ["Great Smoky Mountains NP", "Shenandoah NP", "Olympic NP"],
-      "states": ["TN", "NC", "VA", "WA", "CA"],
-      "best_months": ["April", "May", "June", "July", "August", "September"],
-      "best_time": "Dawn & Dusk",
+      "parks": [
+        "Great Smoky Mountains NP",
+        "Shenandoah NP"
+      ],
+      "states": [
+        "TN",
+        "NC",
+        "VA"
+      ],
+      "best_months": [
+        "May",
+        "June",
+        "September"
+      ],
+      "best_time": "Early Morning",
       "temps": {
-        "April": "48–65°F", "May": "55–72°F", "June": "62–80°F",
-        "July": "68–85°F", "August": "66–83°F", "September": "58–74°F"
+        "May": "50–70°F",
+        "June": "58–78°F",
+        "September": "52–72°F"
       },
       "weather": {
-        "April": "🌧", "May": "⛅", "June": "⛅",
-        "July": "☀️", "August": "☀️", "September": "🌤"
+        "May": "🌦",
+        "June": "⛅",
+        "September": "🍂"
       },
-      "behavior_notes": "Most active at dawn and dusk. Cades Cove in Smokies is one of the best places to see bears in the US.",
-      "viewing_tips": "Never feed. Stay 50 yards away. Cades Cove loop road at sunrise is the gold standard.",
+      "behavior_notes": "Spring brings bears out of dens foraging on new vegetation, while fall sees hyperphagia as they consume massive calories before winter. Great Smoky Mountains hosts one of the densest black bear populations in the Eastern US.",
+      "viewing_tips": "Drive Cades Cove Loop Road or Roaring Fork Motor Nature Trail early in the morning. Never approach or feed bears; use binoculars and keep a 50-yard minimum distance.",
       "nps_source": "https://www.nps.gov/grsm/learn/nature/black-bears.htm",
       "confidence": "High"
     },
     {
-      "id": "california-condor",
-      "name": "California Condor",
-      "emoji": "🦅",
-      "category": "Bird",
-      "parks": ["Grand Canyon NP", "Pinnacles NP", "Zion NP"],
-      "states": ["AZ", "CA", "UT"],
-      "best_months": ["March", "April", "May", "June", "July"],
-      "best_time": "Midday",
-      "temps": {
-        "March": "42–62°F", "April": "50–72°F", "May": "60–82°F",
-        "June": "70–96°F", "July": "78–106°F"
-      },
-      "weather": {
-        "March": "🌤", "April": "☀️", "May": "☀️",
-        "June": "☀️", "July": "☀️"
-      },
-      "behavior_notes": "Once down to 27 individuals, now over 500 in the wild. Ride thermals from canyon walls midday.",
-      "viewing_tips": "South Rim at Grand Canyon. Look for the numbered wing tags — each bird is tracked by conservationists.",
-      "nps_source": "https://www.nps.gov/grca/learn/nature/condor.htm",
-      "confidence": "Medium"
-    },
-    {
-      "id": "west-indian-manatee",
-      "name": "West Indian Manatee",
-      "emoji": "🐟",
+      "id": "florida-manatee",
+      "name": "Florida Manatee",
+      "emoji": "🦭",
       "category": "Marine",
-      "parks": ["Everglades NP", "Biscayne NP"],
-      "states": ["FL"],
-      "best_months": ["November", "December", "January", "February", "March"],
+      "parks": [
+        "Everglades NP",
+        "Canaveral NS"
+      ],
+      "states": [
+        "FL"
+      ],
+      "best_months": [
+        "January",
+        "February",
+        "March"
+      ],
       "best_time": "Morning",
       "temps": {
-        "November": "70–82°F", "December": "65–76°F", "January": "62–74°F",
-        "February": "64–76°F", "March": "68–80°F"
+        "January": "60–75°F",
+        "February": "62–77°F",
+        "March": "65–80°F"
       },
       "weather": {
-        "November": "☀️", "December": "🌤", "January": "🌤",
-        "February": "🌤", "March": "☀️"
+        "January": "☀️",
+        "February": "☀️",
+        "March": "☀️"
       },
-      "behavior_notes": "Manatees gather in warm springs and power plant outflows in winter. Crystal River is the top US spot.",
-      "viewing_tips": "Three Sisters Springs, Crystal River NWR. Snorkeling tours allow in-water encounters (no touching).",
+      "behavior_notes": "Winter months drive manatees into warm spring-fed waters and power plant discharge areas as they seek refuge from cooler ocean temperatures. Aggregations of dozens to hundreds can form at thermal refuges.",
+      "viewing_tips": "Visit Blue Spring State Park adjacent to Canaveral or paddle the Ten Thousand Islands in Everglades. Snorkeling at designated swim-with-manatee areas in Crystal River offers incredible encounters.",
       "nps_source": "https://www.nps.gov/ever/learn/nature/manatee.htm",
       "confidence": "High"
     },
@@ -201,20 +176,228 @@
       "name": "Humpback Whale",
       "emoji": "🐋",
       "category": "Marine",
-      "parks": ["Acadia NP", "Channel Islands NP", "Kenai Fjords NP"],
-      "states": ["ME", "CA", "AK", "HI"],
-      "best_months": ["June", "July", "August", "September"],
+      "parks": [
+        "Glacier Bay NP",
+        "Channel Islands NP"
+      ],
+      "states": [
+        "AK",
+        "CA"
+      ],
+      "best_months": [
+        "June",
+        "July",
+        "August"
+      ],
       "best_time": "Morning",
       "temps": {
-        "June": "55–68°F", "July": "60–72°F",
-        "August": "58–70°F", "September": "52–66°F"
+        "June": "45–62°F",
+        "July": "50–65°F",
+        "August": "50–65°F"
       },
       "weather": {
-        "June": "⛅", "July": "🌤", "August": "🌤", "September": "⛅"
+        "June": "⛅",
+        "July": "🌤",
+        "August": "🌤"
       },
-      "behavior_notes": "Feed in cold northern waters in summer. Breach and fin-slap behaviors most common in feeding areas.",
-      "viewing_tips": "Bar Harbor whale watch tours from Acadia. Seward, AK for Kenai Fjords. Morning departures have calmest seas.",
-      "nps_source": "https://www.nps.gov/kefj/learn/nature/humpbackwhale.htm",
+      "behavior_notes": "Summer months bring humpbacks to nutrient-rich Alaskan and Californian waters to feed heavily on herring and krill. Bubble-net feeding groups in Glacier Bay are among the most spectacular whale-watching displays in the world.",
+      "viewing_tips": "Book a concession-operated tour boat within Glacier Bay for the highest probability sightings. Look for misty blows on the horizon and watch for full breaches, which are most common in calm morning seas.",
+      "nps_source": "https://www.nps.gov/glba/learn/nature/humpback-whale.htm",
+      "confidence": "High"
+    },
+    {
+      "id": "pacific-gray-whale",
+      "name": "Pacific Gray Whale",
+      "emoji": "🐳",
+      "category": "Marine",
+      "parks": [
+        "Olympic NP",
+        "Point Reyes NS"
+      ],
+      "states": [
+        "WA",
+        "CA"
+      ],
+      "best_months": [
+        "March",
+        "April"
+      ],
+      "best_time": "Morning",
+      "temps": {
+        "March": "40–55°F",
+        "April": "44–58°F"
+      },
+      "weather": {
+        "March": "🌧",
+        "April": "🌦"
+      },
+      "behavior_notes": "Spring brings the northward migration of gray whales along the Pacific Coast, with mothers and calves traveling close to shore. This 10,000-mile round-trip migration is the longest known of any mammal.",
+      "viewing_tips": "Position yourself on a headland promontory like Kalaloch Bluff in Olympic NP or Point Reyes Headlands. Scan the horizon for spouts and watch for the characteristic shallow, rolling dive sequence.",
+      "nps_source": "https://www.nps.gov/olym/learn/nature/whales.htm",
+      "confidence": "Medium"
+    },
+    {
+      "id": "bald-eagle",
+      "name": "Bald Eagle",
+      "emoji": "🦅",
+      "category": "Bird",
+      "parks": [
+        "Kenai Fjords NP",
+        "Skagit Valley"
+      ],
+      "states": [
+        "AK",
+        "WA",
+        "MN"
+      ],
+      "best_months": [
+        "November",
+        "December",
+        "January"
+      ],
+      "best_time": "Early Morning",
+      "temps": {
+        "November": "25–45°F",
+        "December": "15–35°F",
+        "January": "10–30°F"
+      },
+      "weather": {
+        "November": "🌨",
+        "December": "❄️",
+        "January": "❄️"
+      },
+      "behavior_notes": "Late fall and winter concentrations occur along salmon-spawning rivers where eagles gather in the hundreds to feed on spent salmon carcasses. Alaska's Chilkat Valley hosts the world's largest known congregation of bald eagles.",
+      "viewing_tips": "Visit the Chilkat Bald Eagle Preserve near Haines, Alaska, or Skagit River in Washington during salmon runs. Early morning light provides excellent photography opportunities as eagles perch in riverside cottonwoods.",
+      "nps_source": "https://www.nps.gov/subjects/birds/bald-eagle.htm",
+      "confidence": "High"
+    },
+    {
+      "id": "sandhill-crane",
+      "name": "Sandhill Crane",
+      "emoji": "🐦",
+      "category": "Bird",
+      "parks": [
+        "Bosque del Apache NWR",
+        "Platte River"
+      ],
+      "states": [
+        "NM",
+        "NE"
+      ],
+      "best_months": [
+        "February",
+        "March"
+      ],
+      "best_time": "Dawn & Dusk",
+      "temps": {
+        "February": "28–55°F",
+        "March": "35–62°F"
+      },
+      "weather": {
+        "February": "⛅",
+        "March": "🌤"
+      },
+      "behavior_notes": "Half a million sandhill cranes stage along Nebraska's Platte River in spring before continuing north, creating one of North America's greatest wildlife spectacles. Flocks darken the sky at dawn as cranes leave roost sites en masse.",
+      "viewing_tips": "Position yourself on the banks of the Platte River near Kearney, NE, 30 minutes before sunrise to witness the morning liftoff. Keep noise to a minimum; any disturbance can cause a premature flush of thousands of birds.",
+      "nps_source": "https://www.fws.gov/refuge/bosque-del-apache",
+      "confidence": "High"
+    },
+    {
+      "id": "wild-turkey",
+      "name": "Wild Turkey",
+      "emoji": "🦃",
+      "category": "Bird",
+      "parks": [
+        "Shenandoah NP",
+        "Ozark NSF"
+      ],
+      "states": [
+        "VA",
+        "MO",
+        "AR"
+      ],
+      "best_months": [
+        "April",
+        "May"
+      ],
+      "best_time": "Early Morning",
+      "temps": {
+        "April": "45–65°F",
+        "May": "55–75°F"
+      },
+      "weather": {
+        "April": "🌦",
+        "May": "⛅"
+      },
+      "behavior_notes": "Spring breeding season brings toms into open fields and forest edges to strut, display their fan tails, and gobble loudly to attract hens. Flocks are highly visible as vegetation is still sparse.",
+      "viewing_tips": "Drive Skyline Drive in Shenandoah slowly at dawn and look for toms strutting in meadow clearings. Binoculars will reveal the iridescent plumage; approach quietly and avoid direct eye contact to prevent flushing.",
+      "nps_source": "https://www.nps.gov/shen/learn/nature/turkey.htm",
+      "confidence": "High"
+    },
+    {
+      "id": "roseate-spoonbill",
+      "name": "Roseate Spoonbill",
+      "emoji": "🦩",
+      "category": "Bird",
+      "parks": [
+        "Everglades NP",
+        "Merritt Island NWR"
+      ],
+      "states": [
+        "FL",
+        "TX"
+      ],
+      "best_months": [
+        "December",
+        "January",
+        "February"
+      ],
+      "best_time": "Morning",
+      "temps": {
+        "December": "62–78°F",
+        "January": "58–74°F",
+        "February": "60–76°F"
+      },
+      "weather": {
+        "December": "☀️",
+        "January": "☀️",
+        "February": "☀️"
+      },
+      "behavior_notes": "Winter dry season concentrates wading birds in shrinking water pools throughout the Everglades, making spoonbills highly visible as they swing their spatulate bills side to side through the water. Nesting colonies are active from winter into spring.",
+      "viewing_tips": "Walk the Anhinga Trail or drive Shark Valley in Everglades NP for close encounters. Low morning light brings out the brilliant pink plumage; arrive early before midday heat creates heat shimmer for photography.",
+      "nps_source": "https://www.nps.gov/ever/learn/nature/spoonbill.htm",
+      "confidence": "High"
+    },
+    {
+      "id": "monarch-butterfly",
+      "name": "Monarch Butterfly",
+      "emoji": "🦋",
+      "category": "Insect",
+      "parks": [
+        "Pinnacles NP",
+        "Point Reyes NS"
+      ],
+      "states": [
+        "CA",
+        "TX",
+        "MN"
+      ],
+      "best_months": [
+        "October",
+        "November"
+      ],
+      "best_time": "Midday",
+      "temps": {
+        "October": "55–75°F",
+        "November": "48–65°F"
+      },
+      "weather": {
+        "October": "☀️",
+        "November": "⛅"
+      },
+      "behavior_notes": "Fall migration funnels millions of monarchs southwestward toward Mexican overwintering grounds, with spectacular concentrations along coastal California eucalyptus groves. Warm midday temperatures encourage flight and feeding activity.",
+      "viewing_tips": "Visit Pismo State Beach Monarch Butterfly Grove or Natural Bridges State Beach near Santa Cruz in October for overwintering clusters. On warm afternoons, monarchs take flight and fill the air in glittering orange clouds.",
+      "nps_source": "https://www.nps.gov/pinn/learn/nature/monarch-butterfly.htm",
       "confidence": "High"
     },
     {
@@ -222,84 +405,101 @@
       "name": "American Alligator",
       "emoji": "🐊",
       "category": "Reptile",
-      "parks": ["Everglades NP", "Big Cypress NP", "Okefenokee NWR"],
-      "states": ["FL", "GA", "LA", "SC"],
-      "best_months": ["March", "April", "May", "June", "July", "August", "September"],
-      "best_time": "Morning",
+      "parks": [
+        "Everglades NP",
+        "Okefenokee NWR"
+      ],
+      "states": [
+        "FL",
+        "GA",
+        "LA"
+      ],
+      "best_months": [
+        "April",
+        "May",
+        "June"
+      ],
+      "best_time": "Midday",
       "temps": {
-        "March": "68–80°F", "April": "72–84°F", "May": "76–88°F",
-        "June": "80–90°F", "July": "82–92°F", "August": "82–91°F", "September": "80–89°F"
+        "April": "68–82°F",
+        "May": "74–88°F",
+        "June": "78–92°F"
       },
       "weather": {
-        "March": "🌤", "April": "☀️", "May": "⛅",
-        "June": "🌦", "July": "🌦", "August": "🌦", "September": "🌦"
+        "April": "☀️",
+        "May": "🌤",
+        "June": "🌦"
       },
-      "behavior_notes": "Cold-blooded; most active when temps above 70°F. Nest in June–July. Bellowing courtship calls in spring.",
-      "viewing_tips": "Anhinga Trail in Everglades — alligators are common year-round. Stay 15 feet minimum, never feed.",
-      "nps_source": "https://www.nps.gov/ever/learn/nature/alligator.htm",
+      "behavior_notes": "Spring warmth brings alligators out of their winter torpor to bask actively and court. Males bellow and create infrasonic water dances to attract females during peak breeding season in May and June.",
+      "viewing_tips": "Walk Anhinga Trail or Shark Valley Tram Road in Everglades for guaranteed sightings; alligators often lie right at trail's edge. Maintain a minimum 15-foot distance and never feed them, as fed alligators become dangerous.",
+      "nps_source": "https://www.nps.gov/ever/learn/nature/alligators.htm",
       "confidence": "High"
     },
     {
-      "id": "bald-eagle",
-      "name": "Bald Eagle",
-      "emoji": "🦅",
-      "category": "Bird",
-      "parks": ["Glacier NP", "Olympic NP", "Congaree NP"],
-      "states": ["MT", "WA", "SC", "AK", "MN"],
-      "best_months": ["January", "February", "October", "November", "December"],
+      "id": "desert-tortoise",
+      "name": "Mojave Desert Tortoise",
+      "emoji": "🐢",
+      "category": "Reptile",
+      "parks": [
+        "Joshua Tree NP",
+        "Mojave NP"
+      ],
+      "states": [
+        "CA",
+        "NV",
+        "AZ"
+      ],
+      "best_months": [
+        "March",
+        "April",
+        "May"
+      ],
       "best_time": "Morning",
       "temps": {
-        "January": "12–28°F", "February": "16–34°F",
-        "October": "34–54°F", "November": "22–40°F", "December": "10–26°F"
+        "March": "48–70°F",
+        "April": "55–80°F",
+        "May": "62–90°F"
       },
       "weather": {
-        "January": "❄️", "February": "❄️",
-        "October": "🍂", "November": "🌨", "December": "❄️"
+        "March": "☀️",
+        "April": "☀️",
+        "May": "☀️"
       },
-      "behavior_notes": "Congregate near open water in winter to feed on fish. Skagit River, WA hosts hundreds in January.",
-      "viewing_tips": "Skagit River Bald Eagle Natural Area, WA. Float trips available. Keep noise low — eagles spook easily.",
-      "nps_source": "https://www.nps.gov/subjects/birds/bald-eagles.htm",
-      "confidence": "High"
+      "behavior_notes": "Spring emergence brings tortoises out of burrows to feed on annual wildflowers and grasses before summer heat forces them underground again. Courtship and mating occur in spring mornings.",
+      "viewing_tips": "Walk slowly through rocky hillsides and creosote flats in Joshua Tree during cool morning hours. Look for well-worn tortoise trails and burrow entrances, but never pick up or move a tortoise as stress can cause them to void critical water reserves.",
+      "nps_source": "https://www.nps.gov/jotr/learn/nature/deserttortoise.htm",
+      "confidence": "Medium"
     },
     {
-      "id": "mountain-goat",
-      "name": "Mountain Goat",
-      "emoji": "🐐",
-      "category": "Mammal",
-      "parks": ["Glacier NP", "Olympic NP", "Mount Rainier NP"],
-      "states": ["MT", "WA", "CO"],
-      "best_months": ["June", "July", "August"],
+      "id": "gila-monster",
+      "name": "Gila Monster",
+      "emoji": "🦎",
+      "category": "Reptile",
+      "parks": [
+        "Saguaro NP",
+        "Grand Canyon NP"
+      ],
+      "states": [
+        "AZ",
+        "NM",
+        "NV"
+      ],
+      "best_months": [
+        "April",
+        "May"
+      ],
       "best_time": "Morning",
       "temps": {
-        "June": "44–62°F", "July": "52–70°F", "August": "50–68°F"
+        "April": "55–85°F",
+        "May": "65–95°F"
       },
       "weather": {
-        "June": "⛅", "July": "☀️", "August": "🌤"
+        "April": "☀️",
+        "May": "☀️"
       },
-      "behavior_notes": "Move to high alpine terrain in summer, above treeline. Nannies with kids in June–July.",
-      "viewing_tips": "Logan Pass in Glacier NP — goats regularly walk right past the visitor center. No approach needed.",
-      "nps_source": "https://www.nps.gov/glac/learn/nature/mountain-goat.htm",
-      "confidence": "High"
-    },
-    {
-      "id": "florida-panther",
-      "name": "Florida Panther",
-      "emoji": "🐆",
-      "category": "Mammal",
-      "parks": ["Big Cypress NP", "Everglades NP"],
-      "states": ["FL"],
-      "best_months": ["December", "January", "February", "March"],
-      "best_time": "Dusk",
-      "temps": {
-        "December": "58–74°F", "January": "55–70°F",
-        "February": "58–72°F", "March": "62–78°F"
-      },
-      "weather": {
-        "December": "🌤", "January": "🌤", "February": "🌤", "March": "☀️"
-      },
-      "behavior_notes": "Critically endangered — fewer than 200 remain. Extremely elusive; camera traps more reliable than sightings.",
-      "viewing_tips": "Turner River Road, Big Cypress. Sightings are rare but tracks and trail cameras confirm presence.",
-      "nps_source": "https://www.nps.gov/bicy/learn/nature/florida-panther.htm",
+      "behavior_notes": "Spring mornings bring Gila monsters out to forage for eggs and small mammals before retreating underground in summer heat. They are most active in the few weeks after emerging from winter dormancy when temperatures are mild.",
+      "viewing_tips": "Walk rocky desert washes and foothills in Saguaro NP East district early in the morning during April. Never handle or provoke a Gila monster; despite their sluggish appearance, they can move quickly and deliver a tenacious, venomous bite.",
+      "nps_source": "https://www.nps.gov/sagu/learn/nature/gila-monster.htm",
       "confidence": "Low"
     },
     {
@@ -307,133 +507,164 @@
       "name": "Sea Otter",
       "emoji": "🦦",
       "category": "Marine",
-      "parks": ["Channel Islands NP", "Kenai Fjords NP"],
-      "states": ["CA", "AK"],
-      "best_months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+      "parks": [
+        "Channel Islands NP",
+        "Point Reyes NS"
+      ],
+      "states": [
+        "CA",
+        "AK"
+      ],
+      "best_months": [
+        "January",
+        "February",
+        "March"
+      ],
       "best_time": "Morning",
       "temps": {
-        "January": "50–58°F", "February": "50–58°F", "March": "52–60°F",
-        "April": "54–62°F", "May": "56–64°F", "June": "58–66°F",
-        "July": "60–68°F", "August": "60–68°F", "September": "60–68°F",
-        "October": "56–64°F", "November": "52–60°F", "December": "50–58°F"
+        "January": "52–62°F",
+        "February": "53–63°F",
+        "March": "54–64°F"
       },
       "weather": {
-        "January": "🌧", "February": "🌧", "March": "⛅",
-        "April": "⛅", "May": "🌤", "June": "⛅",
-        "July": "🌤", "August": "☀️", "September": "☀️",
-        "October": "⛅", "November": "🌧", "December": "🌧"
+        "January": "⛅",
+        "February": "⛅",
+        "March": "🌦"
       },
-      "behavior_notes": "Float in kelp beds, wrapping themselves in kelp to anchor while sleeping. Tool use — crack shellfish on chests.",
-      "viewing_tips": "Moss Landing, CA year-round. Bring binoculars — otters float just offshore in kelp beds.",
-      "nps_source": "https://www.nps.gov/chis/learn/nature/seaotters.htm",
+      "behavior_notes": "Sea otters are visible year-round but winter months offer calm seas and excellent visibility for spotting rafts of otters floating on their backs, grooming their dense fur and cracking shellfish on their chests. Mothers with pups are particularly endearing to observe.",
+      "viewing_tips": "Visit Moss Landing or Elkhorn Slough in Monterey Bay for reliable otter viewing from shore. Bring a spotting scope to observe their tool use and foraging behavior; early morning light creates beautiful conditions for photography.",
+      "nps_source": "https://www.nps.gov/chis/learn/nature/sea-otter.htm",
       "confidence": "High"
     },
     {
-      "id": "wolverine",
-      "name": "Wolverine",
-      "emoji": "🦡",
+      "id": "grizzly-bear",
+      "name": "Grizzly Bear",
+      "emoji": "🐻",
       "category": "Mammal",
-      "parks": ["Glacier NP", "Yellowstone NP", "North Cascades NP"],
-      "states": ["MT", "WY", "WA", "ID"],
-      "best_months": ["February", "March", "April"],
-      "best_time": "Dawn",
+      "parks": [
+        "Denali NP",
+        "Glacier NP"
+      ],
+      "states": [
+        "AK",
+        "MT",
+        "WY"
+      ],
+      "best_months": [
+        "July",
+        "August",
+        "September"
+      ],
+      "best_time": "Dawn & Dusk",
       "temps": {
-        "February": "8–26°F", "March": "16–34°F", "April": "26–44°F"
+        "July": "45–72°F",
+        "August": "43–70°F",
+        "September": "32–58°F"
       },
       "weather": {
-        "February": "❄️", "March": "🌨", "April": "⛅"
+        "July": "🌤",
+        "August": "⛅",
+        "September": "🍂"
       },
-      "behavior_notes": "One of North America's rarest sightings. Travel vast territories — up to 500 sq miles. Snow-dependent.",
-      "viewing_tips": "Virtually impossible to plan a wolverine sighting. Camera traps near high-elevation carrion are the method researchers use.",
-      "nps_source": "https://www.nps.gov/glac/learn/nature/wolverine.htm",
-      "confidence": "Low"
-    },
-    {
-      "id": "monarch-butterfly",
-      "name": "Monarch Butterfly",
-      "emoji": "🦋",
-      "category": "Insect",
-      "parks": ["Point Reyes NS", "Natural Bridges SB"],
-      "states": ["CA", "TX", "FL"],
-      "best_months": ["October", "November", "February", "March"],
-      "best_time": "Midday",
-      "temps": {
-        "October": "58–70°F", "November": "52–64°F",
-        "February": "54–64°F", "March": "56–66°F"
-      },
-      "weather": {
-        "October": "🌤", "November": "⛅", "February": "⛅", "March": "🌤"
-      },
-      "behavior_notes": "Western population overwinters in California eucalyptus groves. Millions cluster on trees in peak years.",
-      "viewing_tips": "Natural Bridges State Beach, Santa Cruz in November. Pismo Beach Monarch Butterfly Grove also excellent.",
-      "nps_source": "https://www.nps.gov/pore/learn/nature/monarch_butterfly.htm",
+      "behavior_notes": "Summer and fall grizzlies enter hyperphagia, consuming up to 20,000 calories daily to build fat reserves for hibernation. Bears congregate at berry patches, whitebark pine groves, and salmon streams, making them highly observable.",
+      "viewing_tips": "In Denali, book a bus tour deep into the park along the Denali Park Road for the highest probability of sightings in open tundra. In Glacier, hike the highline trail or drive Going-to-the-Sun Road at dawn and dusk.",
+      "nps_source": "https://www.nps.gov/dena/learn/nature/grizzlybear.htm",
       "confidence": "Medium"
     },
     {
-      "id": "harbor-seal",
-      "name": "Harbor Seal",
-      "emoji": "🦭",
-      "category": "Marine",
-      "parks": ["Acadia NP", "Olympic NP", "Point Reyes NS"],
-      "states": ["ME", "WA", "CA", "OR"],
-      "best_months": ["April", "May", "June", "July", "August", "September"],
-      "best_time": "Morning",
-      "temps": {
-        "April": "44–56°F", "May": "48–60°F", "June": "52–64°F",
-        "July": "56–68°F", "August": "56–68°F", "September": "52–64°F"
-      },
-      "weather": {
-        "April": "🌧", "May": "⛅", "June": "🌤",
-        "July": "☀️", "August": "☀️", "September": "🌤"
-      },
-      "behavior_notes": "Pups born May–June. Haul out on rocks and beaches to thermoregulate. Do not approach pups — mothers nearby.",
-      "viewing_tips": "Tome Point, Point Reyes. Watch from bluffs — seals habituate to distant observers but flee if approached.",
-      "nps_source": "https://www.nps.gov/pore/learn/nature/harbor_seal.htm",
-      "confidence": "High"
-    },
-    {
-      "id": "trumpeter-swan",
-      "name": "Trumpeter Swan",
-      "emoji": "🦢",
-      "category": "Bird",
-      "parks": ["Yellowstone NP", "Grand Teton NP"],
-      "states": ["WY", "MT", "MN", "AK"],
-      "best_months": ["November", "December", "January", "February", "March"],
-      "best_time": "Morning",
-      "temps": {
-        "November": "18–36°F", "December": "8–24°F", "January": "4–20°F",
-        "February": "8–26°F", "March": "18–38°F"
-      },
-      "weather": {
-        "November": "🌨", "December": "❄️", "January": "❄️",
-        "February": "❄️", "March": "🌨"
-      },
-      "behavior_notes": "Largest native waterfowl in North America. Wingspan up to 8 feet. Once nearly extinct, now recovering.",
-      "viewing_tips": "Firehole River in Yellowstone stays ice-free in winter — swans congregate here. Trumpeting calls carry far.",
-      "nps_source": "https://www.nps.gov/yell/learn/nature/swans.htm",
-      "confidence": "High"
-    },
-    {
-      "id": "desert-bighorn-sheep",
-      "name": "Desert Bighorn Sheep",
-      "emoji": "🐏",
+      "id": "pronghorn",
+      "name": "Pronghorn",
+      "emoji": "🦌",
       "category": "Mammal",
-      "parks": ["Zion NP", "Grand Canyon NP", "Joshua Tree NP"],
-      "states": ["UT", "AZ", "CA", "NV"],
-      "best_months": ["October", "November", "December", "January", "February", "March"],
-      "best_time": "Morning",
+      "parks": [
+        "Badlands NP",
+        "Antelope Island SP"
+      ],
+      "states": [
+        "SD",
+        "WY",
+        "UT"
+      ],
+      "best_months": [
+        "September",
+        "October"
+      ],
+      "best_time": "Dawn & Dusk",
       "temps": {
-        "October": "52–76°F", "November": "40–62°F", "December": "32–54°F",
-        "January": "30–52°F", "February": "34–56°F", "March": "42–64°F"
+        "September": "48–78°F",
+        "October": "35–62°F"
       },
       "weather": {
-        "October": "☀️", "November": "🌤", "December": "⛅",
-        "January": "🌤", "February": "🌤", "March": "🌤"
+        "September": "☀️",
+        "October": "🍂"
       },
-      "behavior_notes": "Ram rut in November–December. Dramatic horn-clashing battles for dominance. Descend to lower elevations in winter.",
-      "viewing_tips": "Angels Landing trail approach in Zion, and the Virgin River canyon walls. Canyon View area in Grand Canyon.",
-      "nps_source": "https://www.nps.gov/zion/learn/nature/bighorn-sheep.htm",
+      "behavior_notes": "Fall rut turns bucks territorial and aggressive, herding does in open grassland and sagebrush flats. Pronghorn are the fastest land animal in the Western Hemisphere and their chase sequences during rut are exhilarating to observe.",
+      "viewing_tips": "Drive the Badlands Loop Road or Roberts Prairie Dog Town Road at dawn scanning the open mixed-grass prairie. Pronghorn are naturally curious and will often pause to look back, providing excellent viewing opportunities.",
+      "nps_source": "https://www.nps.gov/badl/learn/nature/pronghorn.htm",
       "confidence": "High"
+    },
+    {
+      "id": "polar-bear",
+      "name": "Polar Bear",
+      "emoji": "🐻‍❄️",
+      "category": "Mammal",
+      "parks": [
+        "Arctic NWR",
+        "Izembek NWR"
+      ],
+      "states": [
+        "AK"
+      ],
+      "best_months": [
+        "October",
+        "November"
+      ],
+      "best_time": "Midday",
+      "temps": {
+        "October": "5–25°F",
+        "November": "-10–15°F"
+      },
+      "weather": {
+        "October": "🌨",
+        "November": "❄️"
+      },
+      "behavior_notes": "Fall brings polar bears to the coast of Alaska and northern Canada as they wait for sea ice to form for hunting seals. Bears congregate around Churchill-area shores, engaging in sparring, play behavior, and maternal denning.",
+      "viewing_tips": "Join a guided tundra vehicle tour operating out of Churchill, Manitoba (just across the Canadian border but accessible from Alaska). The US side offers viewing from Kaktovik, AK, on Barter Island in the Beaufort Sea during October.",
+      "nps_source": "https://www.fws.gov/refuge/arctic",
+      "confidence": "Low"
+    },
+    {
+      "id": "florida-panther",
+      "name": "Florida Panther",
+      "emoji": "🐆",
+      "category": "Mammal",
+      "parks": [
+        "Big Cypress NP",
+        "Florida Panther NWR"
+      ],
+      "states": [
+        "FL"
+      ],
+      "best_months": [
+        "January",
+        "February",
+        "March"
+      ],
+      "best_time": "Dawn & Dusk",
+      "temps": {
+        "January": "55–72°F",
+        "February": "57–74°F",
+        "March": "62–79°F"
+      },
+      "weather": {
+        "January": "☀️",
+        "February": "☀️",
+        "March": "🌤"
+      },
+      "behavior_notes": "Winter dry season reduces vegetation cover and concentrates deer and hog prey, increasing panther activity and trail camera detection rates. Breeding season in winter makes males more active and vocal at dawn and dusk.",
+      "viewing_tips": "Drive Loop Road through Big Cypress at dawn, scanning scrubby flatwoods and prairie edges. Sightings are extremely rare; camera traps at culverts along Alligator Alley (I-75) provide the most reliable photographic evidence of their presence.",
+      "nps_source": "https://www.nps.gov/bicy/learn/nature/floridapanther.htm",
+      "confidence": "Low"
     }
   ]
 }
