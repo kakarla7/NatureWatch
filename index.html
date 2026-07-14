@@ -787,9 +787,8 @@ function onKey(e) {
     suggFocus = Math.max(suggFocus - 1, 0);
     items.forEach((el, i) => el.classList.toggle('focused', i === suggFocus));
     e.preventDefault();
-  } else if (e.key === 'Enter') {
-    if (suggFocus >= 0) items[suggFocus]?.click();
-    else if (items.length > 0) items[0]?.click();
+  } else if (e.key === 'Enter' && suggFocus >= 0) {
+    items[suggFocus]?.click();
   } else if (e.key === 'Escape') {
     document.getElementById('suggBox').style.display = 'none';
   }
