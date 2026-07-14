@@ -13,12 +13,12 @@ import anthropic
 # ── CONFIG ──────────────────────────────────────────────────────────────────
 OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "../data/wildlife_data.json")
 MODEL = "claude-sonnet-4-6"
-MAX_TOKENS = 8000
+MAX_TOKENS = 16000
 
 PROMPT = """Generate a comprehensive US wildlife viewing guide dataset for NatureWatch.
 Return ONLY valid JSON — no markdown, no backticks, no explanation.
 
-Include exactly 25 diverse animals across these categories: Mammal, Bird, Marine, Reptile, Insect.
+Include exactly 20 diverse animals across these categories: Mammal, Bird, Marine, Reptile, Insect.
 Cover a wide geographic spread across US national parks and wildlife refuges.
 
 Return this exact JSON structure:
