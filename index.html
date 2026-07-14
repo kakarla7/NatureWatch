@@ -704,7 +704,7 @@ const MONTH_ORDER = [
 // ═══════════════════════════════════════════════════════════
 async function loadData() {
   try {
-    const res = await fetch('data/wildlife_data.json');
+    const res = await fetch('./data/wildlife_data.json');
     if (!res.ok) throw new Error('fetch failed');
     const json = await res.json();
     ANIMALS = json.animals || [];
