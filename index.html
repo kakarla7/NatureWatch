@@ -928,6 +928,8 @@ function closeDrop() {
 // ═══════════════════════════════════════════════════════════
 function getFiltered() {
   return ANIMALS.filter(a => {
+    // If animals are selected, only show those animals
+    if (selectedIds.length > 0 && !selectedIds.includes(a.id))     return false;
     if (filter.park  && !a.parks.includes(filter.park))             return false;
     if (filter.month && !a.best_months.includes(filter.month))      return false;
     if (filter.time  && filter.time !== 'Any Time'
