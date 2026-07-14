@@ -559,6 +559,79 @@
     .results { padding: 0 20px 56px; }
     .refresh-bar { padding: 6px 20px; }
   }
+
+  /* ── US MAP ──────────────────────────────────────────── */
+  .map-zone {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 16px;
+  }
+  .map-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--sage-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .map-label span { color: var(--sage-dim); }
+  .map-wrap {
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .map-wrap svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .state-path {
+    fill: var(--bg3);
+    stroke: var(--border);
+    stroke-width: 0.8;
+    cursor: pointer;
+    transition: fill 0.2s;
+  }
+  .state-path.has-animals {
+    fill: #1E3A24;
+  }
+  .state-path.state-active {
+    fill: var(--w-accent) !important;
+    opacity: 0.85;
+  }
+  .state-path.has-animals:hover {
+    fill: #2A5030;
+  }
+  .state-path.state-active:hover {
+    opacity: 1;
+  }
+  .map-state-pill {
+    background: var(--w-bg);
+    border: 1px solid var(--w-dim);
+    border-radius: 20px;
+    padding: 4px 10px 4px 12px;
+    font-size: 12px;
+    color: var(--w-accent);
+    display: none;
+    align-items: center;
+    gap: 5px;
+    margin-top: 8px;
+    width: fit-content;
+  }
+  .map-state-pill.visible { display: flex; }
+  .map-state-pill .x {
+    color: var(--sage-dim);
+    font-size: 15px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 2px;
+  }
+  .map-state-pill .x:hover { color: var(--w-accent); }
+
 </style>
 </head>
 <body>
@@ -608,7 +681,6 @@
       </div>
     </div>
     <div class="filter-bar">
-      <button class="pill pill-on" id="pill-park" onclick="openDrop(event,'park')">🏕 All Parks ▾</button>
       <button class="pill" id="pill-month" onclick="openDrop(event,'month')">📅 All Months ▾</button>
       <button class="pill" id="pill-time" onclick="openDrop(event,'time')">🕐 Any Time ▾</button>
       <div class="sort-div"></div>
@@ -617,6 +689,132 @@
       <button class="pill" id="sort-park"   onclick="setSort('park',this)">Park</button>
       <button class="pill" id="sort-animal" onclick="setSort('animal',this)">Animal</button>
       <button class="pill" id="sort-time"   onclick="setSort('time',this)">Time</button>
+    </div>
+  </div>
+
+  <!-- US Map -->
+  <div class="map-zone">
+    <div class="map-label">
+      <span>🗺 Click a state to filter</span>
+      <span id="mapStateCount"></span>
+    </div>
+    <div class="map-wrap">
+      <svg viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" id="usMap">
+        <!-- Simplified US state paths -->
+        <path class="state-path" id="st-WA" d="M 112 60 L 192 52 L 198 82 L 174 90 L 164 108 L 130 112 L 108 100 Z" data-state="WA" data-name="Washington" onclick="clickState('WA','Washington')"/>
+        <path class="state-path" id="st-OR" d="M 108 100 L 164 108 L 168 160 L 108 160 L 96 140 Z" data-state="OR" data-name="Oregon" onclick="clickState('OR','Oregon')"/>
+        <path class="state-path" id="st-CA" d="M 96 140 L 108 160 L 120 220 L 100 280 L 72 300 L 60 260 L 68 200 L 78 160 Z" data-state="CA" data-name="California" onclick="clickState('CA','California')"/>
+        <path class="state-path" id="st-NV" d="M 108 160 L 168 160 L 176 220 L 148 260 L 120 220 Z" data-state="NV" data-name="Nevada" onclick="clickState('NV','Nevada')"/>
+        <path class="state-path" id="st-ID" d="M 164 108 L 198 82 L 210 130 L 206 176 L 168 160 L 168 130 Z" data-state="ID" data-name="Idaho" onclick="clickState('ID','Idaho')"/>
+        <path class="state-path" id="st-MT" d="M 192 52 L 310 48 L 316 110 L 260 120 L 210 130 L 198 82 Z" data-state="MT" data-name="Montana" onclick="clickState('MT','Montana')"/>
+        <path class="state-path" id="st-WY" d="M 210 130 L 260 120 L 272 176 L 206 176 Z" data-state="WY" data-name="Wyoming" onclick="clickState('WY','Wyoming')"/>
+        <path class="state-path" id="st-UT" d="M 168 160 L 206 176 L 206 230 L 176 220 Z" data-state="UT" data-name="Utah" onclick="clickState('UT','Utah')"/>
+        <path class="state-path" id="st-AZ" d="M 120 220 L 148 260 L 176 260 L 176 300 L 108 300 L 100 280 Z" data-state="AZ" data-name="Arizona" onclick="clickState('AZ','Arizona')"/>
+        <path class="state-path" id="st-CO" d="M 206 176 L 272 176 L 280 230 L 206 230 Z" data-state="CO" data-name="Colorado" onclick="clickState('CO','Colorado')"/>
+        <path class="state-path" id="st-NM" d="M 176 220 L 206 230 L 214 290 L 176 290 L 176 260 Z" data-state="NM" data-name="New Mexico" onclick="clickState('NM','New Mexico')"/>
+        <path class="state-path" id="st-ND" d="M 310 48 L 400 48 L 400 100 L 316 110 Z" data-state="ND" data-name="North Dakota" onclick="clickState('ND','North Dakota')"/>
+        <path class="state-path" id="st-SD" d="M 316 110 L 400 100 L 404 156 L 318 156 Z" data-state="SD" data-name="South Dakota" onclick="clickState('SD','South Dakota')"/>
+        <path class="state-path" id="st-NE" d="M 318 156 L 404 156 L 408 196 L 318 196 Z" data-state="NE" data-name="Nebraska" onclick="clickState('NE','Nebraska')"/>
+        <path class="state-path" id="st-KS" d="M 318 196 L 408 196 L 410 234 L 318 234 Z" data-state="KS" data-name="Kansas" onclick="clickState('KS','Kansas')"/>
+        <path class="state-path" id="st-OK" d="M 280 234 L 318 234 L 318 270 L 408 270 L 408 234 L 410 234 L 412 270 L 316 272 L 280 270 Z" data-state="OK" data-name="Oklahoma" onclick="clickState('OK','Oklahoma')"/>
+        <path class="state-path" id="st-TX" d="M 214 290 L 280 270 L 316 272 L 340 330 L 320 390 L 270 400 L 230 370 L 200 330 Z" data-state="TX" data-name="Texas" onclick="clickState('TX','Texas')"/>
+        <path class="state-path" id="st-MN" d="M 400 48 L 460 48 L 464 90 L 440 120 L 410 130 L 400 100 Z" data-state="MN" data-name="Minnesota" onclick="clickState('MN','Minnesota')"/>
+        <path class="state-path" id="st-IA" d="M 410 130 L 460 126 L 464 170 L 412 170 Z" data-state="IA" data-name="Iowa" onclick="clickState('IA','Iowa')"/>
+        <path class="state-path" id="st-MO" d="M 412 170 L 464 170 L 468 220 L 450 240 L 412 234 L 408 196 Z" data-state="MO" data-name="Missouri" onclick="clickState('MO','Missouri')"/>
+        <path class="state-path" id="st-AR" d="M 412 240 L 450 240 L 454 280 L 412 280 Z" data-state="AR" data-name="Arkansas" onclick="clickState('AR','Arkansas')"/>
+        <path class="state-path" id="st-LA" d="M 412 280 L 454 280 L 450 320 L 420 330 L 408 310 Z" data-state="LA" data-name="Louisiana" onclick="clickState('LA','Louisiana')"/>
+        <path class="state-path" id="st-WI" d="M 460 48 L 500 60 L 504 110 L 470 120 L 464 90 Z" data-state="WI" data-name="Wisconsin" onclick="clickState('WI','Wisconsin')"/>
+        <path class="state-path" id="st-IL" d="M 464 120 L 504 120 L 506 190 L 466 196 L 464 170 Z" data-state="IL" data-name="Illinois" onclick="clickState('IL','Illinois')"/>
+        <path class="state-path" id="st-MI" d="M 500 60 L 540 56 L 548 100 L 520 110 L 504 110 Z" data-state="MI" data-name="Michigan" onclick="clickState('MI','Michigan')"/>
+        <path class="state-path" id="st-IN" d="M 504 120 L 534 120 L 536 176 L 506 176 Z" data-state="IN" data-name="Indiana" onclick="clickState('IN','Indiana')"/>
+        <path class="state-path" id="st-OH" d="M 534 112 L 566 110 L 570 168 L 536 168 Z" data-state="OH" data-name="Ohio" onclick="clickState('OH','Ohio')"/>
+        <path class="state-path" id="st-KY" d="M 506 176 L 570 168 L 572 202 L 508 210 Z" data-state="KY" data-name="Kentucky" onclick="clickState('KY','Kentucky')"/>
+        <path class="state-path" id="st-TN" d="M 508 210 L 572 202 L 574 226 L 510 232 Z" data-state="TN" data-name="Tennessee" onclick="clickState('TN','Tennessee')"/>
+        <path class="state-path" id="st-MS" d="M 450 240 L 470 240 L 472 300 L 450 300 Z" data-state="MS" data-name="Mississippi" onclick="clickState('MS','Mississippi')"/>
+        <path class="state-path" id="st-AL" d="M 470 240 L 510 240 L 512 300 L 472 300 Z" data-state="AL" data-name="Alabama" onclick="clickState('AL','Alabama')"/>
+        <path class="state-path" id="st-GA" d="M 510 232 L 548 228 L 550 300 L 512 300 Z" data-state="GA" data-name="Georgia" onclick="clickState('GA','Georgia')"/>
+        <path class="state-path" id="st-FL" d="M 512 300 L 550 300 L 556 340 L 530 380 L 510 370 L 508 330 Z" data-state="FL" data-name="Florida" onclick="clickState('FL','Florida')"/>
+        <path class="state-path" id="st-SC" d="M 548 228 L 580 224 L 582 264 L 550 270 Z" data-state="SC" data-name="South Carolina" onclick="clickState('SC','South Carolina')"/>
+        <path class="state-path" id="st-NC" d="M 572 202 L 614 198 L 616 224 L 574 226 Z" data-state="NC" data-name="North Carolina" onclick="clickState('NC','North Carolina')"/>
+        <path class="state-path" id="st-VA" d="M 570 168 L 614 164 L 616 198 L 572 202 Z" data-state="VA" data-name="Virginia" onclick="clickState('VA','Virginia')"/>
+        <path class="state-path" id="st-WV" d="M 566 152 L 594 148 L 596 180 L 570 184 Z" data-state="WV" data-name="West Virginia" onclick="clickState('WV','West Virginia')"/>
+        <path class="state-path" id="st-PA" d="M 566 128 L 610 124 L 612 158 L 568 162 Z" data-state="PA" data-name="Pennsylvania" onclick="clickState('PA','Pennsylvania')"/>
+        <path class="state-path" id="st-NY" d="M 580 96 L 626 90 L 628 128 L 580 132 Z" data-state="NY" data-name="New York" onclick="clickState('NY','New York')"/>
+        <path class="state-path" id="st-VT" d="M 626 90 L 642 88 L 644 114 L 628 116 Z" data-state="VT" data-name="Vermont" onclick="clickState('VT','Vermont')"/>
+        <path class="state-path" id="st-NH" d="M 642 88 L 656 86 L 658 110 L 644 112 Z" data-state="NH" data-name="New Hampshire" onclick="clickState('NH','New Hampshire')"/>
+        <path class="state-path" id="st-ME" d="M 656 60 L 690 56 L 692 100 L 658 108 Z" data-state="ME" data-name="Maine" onclick="clickState('ME','Maine')"/>
+        <path class="state-path" id="st-MA" d="M 644 112 L 676 110 L 678 126 L 646 128 Z" data-state="MA" data-name="Massachusetts" onclick="clickState('MA','Massachusetts')"/>
+        <path class="state-path" id="st-CT" d="M 646 126 L 664 124 L 666 138 L 648 140 Z" data-state="CT" data-name="Connecticut" onclick="clickState('CT','Connecticut')"/>
+        <path class="state-path" id="st-RI" d="M 664 124 L 676 122 L 678 134 L 666 136 Z" data-state="RI" data-name="Rhode Island" onclick="clickState('RI','Rhode Island')"/>
+        <path class="state-path" id="st-NJ" d="M 612 130 L 628 128 L 630 154 L 614 156 Z" data-state="NJ" data-name="New Jersey" onclick="clickState('NJ','New Jersey')"/>
+        <path class="state-path" id="st-DE" d="M 614 154 L 628 152 L 628 166 L 614 167 Z" data-state="DE" data-name="Delaware" onclick="clickState('DE','Delaware')"/>
+        <path class="state-path" id="st-MD" d="M 594 156 L 614 154 L 616 172 L 596 174 Z" data-state="MD" data-name="Maryland" onclick="clickState('MD','Maryland')"/>
+        <path class="state-path" id="st-DC" d="M 604 168 L 612 166 L 612 174 L 604 174 Z" data-state="DC" data-name="DC" onclick="clickState('DC','DC')"/>
+        <!-- Alaska inset -->
+        <path class="state-path" id="st-AK" d="M 60 440 L 200 420 L 220 480 L 180 520 L 100 530 L 60 500 Z" data-state="AK" data-name="Alaska" onclick="clickState('AK','Alaska')"/>
+        <!-- Hawaii inset -->
+        <path class="state-path" id="st-HI" d="M 280 490 L 310 488 L 316 504 L 286 506 Z" data-state="HI" data-name="Hawaii" onclick="clickState('HI','Hawaii')"/>
+        <path class="state-path" id="st-HI2" d="M 320 494 L 340 492 L 342 506 L 322 508 Z" data-state="HI" data-name="Hawaii" onclick="clickState('HI','Hawaii')"/>
+        <path class="state-path" id="st-HI3" d="M 346 498 L 360 496 L 362 508 L 348 510 Z" data-state="HI" data-name="Hawaii" onclick="clickState('HI','Hawaii')"/>
+        <!-- State labels -->
+        <text x="148" y="90" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">WA</text>
+        <text x="130" y="138" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">OR</text>
+        <text x="88" y="230" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">CA</text>
+        <text x="140" y="200" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">NV</text>
+        <text x="186" y="145" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">ID</text>
+        <text x="254" y="86" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">MT</text>
+        <text x="240" y="154" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">WY</text>
+        <text x="188" y="206" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">UT</text>
+        <text x="144" y="266" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">AZ</text>
+        <text x="242" y="206" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">CO</text>
+        <text x="194" y="262" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">NM</text>
+        <text x="356" y="80" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">ND</text>
+        <text x="360" y="132" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">SD</text>
+        <text x="362" y="178" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">NE</text>
+        <text x="364" y="216" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">KS</text>
+        <text x="346" y="254" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">OK</text>
+        <text x="274" y="340" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">TX</text>
+        <text x="432" y="80" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">MN</text>
+        <text x="436" y="152" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">IA</text>
+        <text x="438" y="206" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">MO</text>
+        <text x="460" y="262" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">AR</text>
+        <text x="430" y="302" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">LA</text>
+        <text x="480" y="86" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">WI</text>
+        <text x="484" y="158" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">IL</text>
+        <text x="522" y="86" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">MI</text>
+        <text x="518" y="150" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">IN</text>
+        <text x="550" y="140" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">OH</text>
+        <text x="538" y="192" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">KY</text>
+        <text x="540" y="220" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">TN</text>
+        <text x="460" y="272" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">MS</text>
+        <text x="490" y="272" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">AL</text>
+        <text x="528" y="266" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">GA</text>
+        <text x="528" y="336" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">FL</text>
+        <text x="564" y="250" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">SC</text>
+        <text x="592" y="214" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">NC</text>
+        <text x="590" y="186" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">VA</text>
+        <text x="578" y="168" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">WV</text>
+        <text x="588" y="142" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">PA</text>
+        <text x="602" y="112" font-size="8" fill="#4A6B44" text-anchor="middle" pointer-events="none">NY</text>
+        <text x="668" y="56" font-size="7" fill="#4A6B44" text-anchor="middle" pointer-events="none">ME</text>
+        <text x="660" y="100" font-size="7" fill="#4A6B44" text-anchor="middle" pointer-events="none">NH</text>
+        <text x="634" y="102" font-size="7" fill="#4A6B44" text-anchor="middle" pointer-events="none">VT</text>
+        <text x="660" y="120" font-size="7" fill="#4A6B44" text-anchor="middle" pointer-events="none">MA</text>
+        <text x="656" y="134" font-size="7" fill="#4A6B44" text-anchor="middle" pointer-events="none">CT</text>
+        <text x="670" y="130" font-size="7" fill="#4A6B44" text-anchor="middle" pointer-events="none">RI</text>
+        <text x="620" y="144" font-size="7" fill="#4A6B44" text-anchor="middle" pointer-events="none">NJ</text>
+        <text x="620" y="162" font-size="7" fill="#4A6B44" text-anchor="middle" pointer-events="none">DE</text>
+        <text x="604" y="166" font-size="7" fill="#4A6B44" text-anchor="middle" pointer-events="none">MD</text>
+        <text x="130" y="478" font-size="9" fill="#4A6B44" text-anchor="middle" pointer-events="none">AK</text>
+        <text x="316" y="500" font-size="7" fill="#4A6B44" text-anchor="middle" pointer-events="none">HI</text>
+        <!-- Inset labels -->
+        <text x="60" y="415" font-size="8" fill="#2A4A30" pointer-events="none">Alaska</text>
+        <text x="270" y="485" font-size="8" fill="#2A4A30" pointer-events="none">Hawaii</text>
+      </svg>
+      <div class="map-state-pill" id="mapStatePill">
+        <span id="mapStateName"></span>
+        <span class="x" onclick="clearStateFilter()">×</span>
+      </div>
     </div>
   </div>
 
@@ -689,8 +887,9 @@ const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSePNZLrpSztnMfJHNvJJ_
 
 let ANIMALS = [];          // loaded from wildlife_data.json
 let selectedIds = [];      // animals the user has chosen
+let selectedState = null;  // state code clicked on map e.g. 'WY'
 let currentSort = 'month';
-let filter = { park: null, month: null, time: null };
+let filter = { month: null, time: null };
 let lastNotFound = '';     // last search that found no results
 let suggFocus = -1;
 
@@ -702,12 +901,64 @@ const MONTH_ORDER = [
 // ═══════════════════════════════════════════════════════════
 //  LOAD DATA
 // ═══════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════
+//  MAP
+// ═══════════════════════════════════════════════════════════
+function updateMap() {
+  if (!ANIMALS.length) return;
+
+  // Get states that have animals matching current animal selection
+  const filtered = ANIMALS.filter(a =>
+    selectedIds.length === 0 || selectedIds.includes(a.id)
+  );
+  const activeStates = new Set();
+  filtered.forEach(a => a.states.forEach(s => activeStates.add(s)));
+
+  // Update all state paths
+  document.querySelectorAll('.state-path').forEach(path => {
+    const st = path.dataset.state;
+    path.classList.remove('has-animals', 'state-active');
+    if (activeStates.has(st)) path.classList.add('has-animals');
+    if (selectedState === st)  path.classList.add('state-active');
+  });
+
+  // Update count label
+  const countEl = document.getElementById('mapStateCount');
+  if (countEl) {
+    countEl.textContent = activeStates.size > 0
+      ? `${activeStates.size} states`
+      : '';
+  }
+}
+
+function clickState(code, name) {
+  if (selectedState === code) {
+    // Deselect
+    selectedState = null;
+    document.getElementById('mapStatePill').classList.remove('visible');
+  } else {
+    selectedState = code;
+    document.getElementById('mapStateName').textContent = '🗺 ' + name;
+    document.getElementById('mapStatePill').classList.add('visible');
+  }
+  updateMap();
+  render();
+}
+
+function clearStateFilter() {
+  selectedState = null;
+  document.getElementById('mapStatePill').classList.remove('visible');
+  updateMap();
+  render();
+}
+
 async function loadData() {
   try {
     const res = await fetch('./data/wildlife_data.json');
     if (!res.ok) throw new Error('fetch failed');
     const json = await res.json();
     ANIMALS = json.animals || [];
+    updateMap();
 
     // Update UI meta
     document.getElementById('wBadge').textContent = ANIMALS.length;
@@ -812,12 +1063,14 @@ function addAnimal(id) {
 
   document.getElementById('animalSearch').value = '';
   document.getElementById('suggBox').style.display = 'none';
+  updateMap();
   render();
 }
 
 function removeAnimal(id) {
   selectedIds = selectedIds.filter(x => x !== id);
   document.querySelector(`.tag[data-id="${id}"]`)?.remove();
+  updateMap();
   render();
 }
 
@@ -868,17 +1121,12 @@ function setSort(type, btn) {
 }
 
 const DROP_DATA = {
-  park: () => {
-    const parks = new Set();
-    ANIMALS.forEach(a => a.parks.forEach(p => parks.add(p)));
-    return ['All Parks', ...Array.from(parks).sort()];
-  },
   month: () => ['All Months', ...MONTH_ORDER],
   time:  () => ['Any Time', 'Dawn & Dusk', 'Early Morning', 'Morning', 'Midday', 'Dusk', 'Anytime']
 };
 
-const PILL_LABELS = { park: '🏕', month: '📅', time: '🕐' };
-const PILL_DEFAULTS = { park: 'All Parks', month: 'All Months', time: 'Any Time' };
+const PILL_LABELS = { month: '📅', time: '🕐' };
+const PILL_DEFAULTS = { month: 'All Months', time: 'Any Time' };
 
 function openDrop(e, type) {
   e.stopPropagation();
@@ -930,7 +1178,8 @@ function getFiltered() {
   return ANIMALS.filter(a => {
     // If animals are selected, only show those animals
     if (selectedIds.length > 0 && !selectedIds.includes(a.id))     return false;
-    if (filter.park  && !a.parks.includes(filter.park))             return false;
+    // If state is selected on map, only show animals in that state
+    if (selectedState && !a.states.includes(selectedState))         return false;
     if (filter.month && !a.best_months.includes(filter.month))      return false;
     if (filter.time  && filter.time !== 'Any Time'
         && a.best_time !== filter.time)                             return false;
